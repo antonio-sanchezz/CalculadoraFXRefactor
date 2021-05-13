@@ -13,80 +13,85 @@ import javafx.stage.Stage;
 
 public class CalculadoraController {
 
-    @FXML
-    private Label label;
+	@FXML
+	private Label label;
 
-    @FXML
-    private TextField num1;
+	@FXML
+	private TextField num1;
 
-    @FXML
-    private TextField num2;
-    
-    @FXML
-    private TextField resultado;
-    
-    public void initialize() {
-        // TODO
-    }
+	@FXML
+	private TextField num2;
 
-    @FXML
-    private void sumarButtonAction(ActionEvent event) throws IOException {
+	@FXML
+	private TextField resultado;
 
-    	try {
-    		double num1Calc = Double.parseDouble(num1.getText());
-    		double num2Calc = Double.parseDouble(num2.getText());
-    		double result = num1Calc + num2Calc;
-    		resultado.setText(result + "");
-    	} catch (NumberFormatException e) {
-    		resultado.setText("Recuerda que debes utilizar números, no letras.");
-    	}
+	private double num1Calc, num2Calc, result;
 
-    }
-    
-    @FXML
-    private void restarButtonAction(ActionEvent event) {
-    	
-    	try {
-    		double num1Calc = Double.parseDouble(num1.getText());
-    		double num2Calc = Double.parseDouble(num2.getText());
-    		double result = num1Calc - num2Calc;
-    		resultado.setText(result + "");
-    	} catch (NumberFormatException e) {
-    		resultado.setText("Recuerda que debes utilizar números, no letras.");
-    	}
-    	
-    }
-    
-    @FXML
-    private void multiplicarButtonAction(ActionEvent event) {
+	private static final String FAIL = "Recuerda que debes utilizar números, no letras.";
 
-    	try {
-    		double num1Calc = Double.parseDouble(num1.getText());
-    		double num2Calc = Double.parseDouble(num2.getText());
-    		double result = num1Calc * num2Calc;
-    		resultado.setText(result + "");
-    	} catch (NumberFormatException e) {
-    		resultado.setText("Recuerda que debes utilizar números, no letras.");
-    	}
-    	
-    }
-    
-    @FXML
-    private void dividirButtonAction(ActionEvent event) {
-    	    	
-    	try {
-        	double num1Calc = Double.parseDouble(num1.getText());
-        	double num2Calc = Double.parseDouble(num2.getText());
-    		double result = num1Calc / num2Calc;
-    		if (num2Calc == 0) {
-    			resultado.setText("No se puede dividir entre 0.");
-    		} else {
-    			resultado.setText(result + "");
-    		}
+	@FXML
+	private void sumarButtonAction(ActionEvent event) throws IOException {
 
-    	} catch (NumberFormatException e) {
-    		resultado.setText("Recuerda que debes utilizar números, no letras.");
-    	}
-    	
-    }
+		try {
+			num1Calc = Double.parseDouble(num1.getText());
+			num2Calc = Double.parseDouble(num2.getText());
+			result = num1Calc + num2Calc;
+			setResult(result);
+		} catch (NumberFormatException e) {
+			resultado.setText(FAIL);
+		}
+
+	}
+
+	@FXML
+	private void restarButtonAction(ActionEvent event) {
+
+		try {
+			num1Calc = Double.parseDouble(num1.getText());
+			num2Calc = Double.parseDouble(num2.getText());
+			result = num1Calc - num2Calc;
+			setResult(result);
+		} catch (NumberFormatException e) {
+			resultado.setText(FAIL);
+		}
+
+	}
+
+	@FXML
+	private void multiplicarButtonAction(ActionEvent event) {
+
+		try {
+			num1Calc = Double.parseDouble(num1.getText());
+			num2Calc = Double.parseDouble(num2.getText());
+			result = num1Calc * num2Calc;
+			setResult(result);
+		} catch (NumberFormatException e) {
+			resultado.setText(FAIL);
+		}
+
+	}
+
+	@FXML
+	private void dividirButtonAction(ActionEvent event) {
+
+		try {
+			num1Calc = Double.parseDouble(num1.getText());
+			num2Calc = Double.parseDouble(num2.getText());
+			result = num1Calc / num2Calc;
+			if (num2Calc == 0) {
+				resultado.setText("No se puede dividir entre 0.");
+			} else {
+				setResult(result);
+			}
+
+		} catch (NumberFormatException e) {
+			resultado.setText(FAIL);
+		}
+
+	}
+
+	private void setResult(double result) {
+		resultado.setText(result + "");
+	}
+
 }
