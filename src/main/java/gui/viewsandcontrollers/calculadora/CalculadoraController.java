@@ -11,6 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Antonio Sanchez Espinosa
+ * 
+ * Esta clase nos proporciona los métodos necesarios para realizar operaciones con la calculadora.
+ *
+ */
 public class CalculadoraController {
 
 	@FXML
